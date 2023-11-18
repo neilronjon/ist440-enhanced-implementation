@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVMeter Community Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2C3E50;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    nav {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .community-content {
+      padding: 2rem;
+    }
+
+    img {
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .groups-section {
+      margin-top: 2rem;
+    }
+
+    .groups-header {
+      background-color: #f2f2f2;
+      padding: 1rem;
+      font-weight: bold;
+    }
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rss-parser/3.9.0/rss-parser.min.js"></script>
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Misconceptions</h1>
+  </header>
+
+  <nav>
+    <a href="homepage.html">Home</a></li>
+    <a href="index.html">Community Hub</a></li>
+    <a href="misconceptions.html">Common Misconceptions</a></li>
+  </nav>
+  </nav>
+  </header>
+
+  <section class="misconceptions-banner">
+
+    <img src="https://roundandabout.co.uk/wp-content/uploads/EV-WEB.jpg" alt="Electric Vehicles">
+
+    <h1>Identifying Misconceptions</h1>
+  </section>
+
+  <section class="content">
+
+    <p>Frequently held misconceptions regarding electric cars (EVs) are caused by a lack of knowledge and comprehension
+      of the technology. To spread accurate information and boost EV adoption, it's critical to address these myths. The
+      following are a few of the most widespread myths:</p>
+
+
+    <h3>Limited Range</h3>
+    <p>Numerous individuals think that electric vehicles (EVs) are only good for short trips because of their extremely
+      low driving ranges. Modern EVs provide a range that can match or even exceed that of many gasoline-powered
+      automobiles, in contrast to the early EV models' constrained driving ranges. In the present day, some EVs may
+      travel far over 300 miles on a single charge.</p>
+
+    <h3>Long Charging Times</h3>
+    <p>Some people think EVs are unsuitable for daily use because they require extremely long charging times. Even
+      though charging periods vary depending on the charger type and EV model, fast chargers enable many EVs to be
+      charged to a sizeable portion of their capacity in under an hour, and overnight home charging is practical for
+      daily use.</p>
+
+    <h3>Lack of Charging Infrastructure</h3>
+    <p>There is a widespread misperception that there is a lack of charging infrastructure, making it challenging to
+      locate charging stations. In actuality, there are a lot of charging stations available, especially in urban areas,
+      as charging networks have grown dramatically in recent years.</p>
+  </section>
+
+  <body>
+    <h1>Latest EV News</h1>
+    <div id="rss-feed">Loading...</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rss-parser/3.9.0/rss-parser.min.js"></script>
+    <script>
+      const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+      const RSS_URL = 'https://www.carscoops.com/category/news/feed';
+
+
+      const parser = new RSSParser();
+
+
+      parser.parseURL(CORS_PROXY + RSS_URL, (err, feed) => {
+        if (err) {
+          console.error('Error fetching RSS feed:', err);
+          document.getElementById('rss-feed').textContent = 'Failed to load RSS feed.';
+          return;
+        }
+
+        const items = feed.items;
+        let html = '<ul>';
+
+        items.forEach(item => {
+          const title = item.title;
+          const link = item.link;
+          const description = item.contentSnippet;
+
+          html += `
+                                <li>
+                                    <h2><a href="${link}" target="_blank" rel="noopener">${title}</a></h2>
+                                    <p>${description}</p>
+                                </li>
+                            `;
+        });
+
+        html += '</ul>';
+        document.getElementById('rss-feed').innerHTML = html;
+      });
+    </script>
+  </body>
+
+
+
+  <footer>
+
+  </footer>
+  <div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/655395d2cec6a912820fcdfa/1hf782g94';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+nav {
+    background-color: #333;
+    overflow: hidden;
+    position: sticky;
+    top: 0; /* This defines the top position of the sticky nav bar */
+    z-index: 1000; /* This ensures that the nav bar stays on top of other elements */
+}

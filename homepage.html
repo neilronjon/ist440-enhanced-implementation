@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVMeter Community Hub</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    header {
+      background-color: #2C3E50;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      background-color: #333;
+      overflow: hidden;
+      position: -webkit-sticky;
+      /* Fallback for Safari */
+      position: sticky;
+      top: 0;
+
+      z-index: 1000;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .community-content {
+      padding: 2rem;
+    }
+
+    img {
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .groups-section {
+      margin-top: 2rem;
+    }
+
+    .groups-header {
+      background-color: #f2f2f2;
+      padding: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to EVmeter</h1>
+  </header>
+
+  <nav>
+    <a href="homepage.html">Home</a></li>
+    <a href="index.html">Community Hub</a></li>
+    <a href="misconceptions.html">Common Misconceptions</a></li>
+  </nav>
+  </header>
+
+  <section class="trip-banner">
+    <h1>Plan your trip today!</h1>
+    <br></br>
+    <h2>Estimate your range!</h2>
+    <p>With our range estimator you can accuratly see how far your vhecles range! This isnt just for current owners but
+      for anyone whos interested in EVs. Planning on getting an EV but worried about that family road trip you take
+      every year? Use the estimator to see how much of an impact it really is.</p>
+  </section>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rangeEstimatorModal">
+    Estimate Range
+  </button>
+
+  <div class="modal fade" id="rangeEstimatorModal" tabindex="-1" role="dialog"
+    aria-labelledby="rangeEstimatorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rangeEstimatorModalLabel">Estimate Range</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="rangeEstimatorForm">
+            Battery Capacity (kWh): <input type="text" id="batteryCapacity">
+            Average Consumption (Wh/mile): <input type="text" id="consumptionRate">
+            <input type="submit" value="Estimate Range">
+          </form>
+          <p>Estimated Range: <span id="outputRange"></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const rangeEstimatorForm = document.getElementById("rangeEstimatorForm");
+      rangeEstimatorForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let batteryCapacity = parseFloat(document.getElementById("batteryCapacity").value);
+        let consumptionRate = parseFloat(document.getElementById("consumptionRate").value);
+        let estimatedRange = batteryCapacity * 1000 / consumptionRate;
+        document.getElementById("outputRange").textContent = estimatedRange.toFixed(2) + " miles";
+      });
+    });
+  </script>
+  <br></br>
+  <h2>Use Google Maps to plan your route!</h2>
+  </script>
+  <section class="map">
+    <iframe width="600" height="200" style="border:0" loading="lazy" allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+          &q=Space+Needle,Seattle+WA">
+    </iframe>
+  </section>
+
+  <section class="popular-destinations">
+    <h1>Popular Destinations!</h1>
+    <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+
+      <ul class="carousel-indicators">
+        <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#homeCarousel" data-slide-to="1"></li>
+        <li data-target="#homeCarousel" data-slide-to="2"></li>
+      </ul>
+
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://megansmoving.com/wp-content/uploads/2020/07/Downtown-Orlando-scaled.jpg" alt="Orlando, FL"
+            width="75%">
+        </div>
+        <div class="carousel-item">
+          <img src="https://vegasexperience.com/wp-content/uploads/2023/01/Photo-of-Las-Vegas-Downtown-1920x1280.jpg"
+            alt="Las Vegas, NV" width="75%">
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://www.travelandleisure.com/thmb/91pb8LbDAUwUN_11wATYjx5oF8Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/new-york-city-evening-NYCTG0221-52492d6ccab44f328a1c89f41ac02aea.jpg"
+            alt="New York City, NY" width="75%">
+        </div>
+      </div>
+
+
+      <a class="carousel-control-prev" href="#homeCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#homeCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+  </section>
+
+  <section class="charging-reminders">
+    <h1>Remember!</h1>
+    <h3>When you charge an EV...</h3>
+    <ul>
+      <li>Follow manufacturer's guidelines when charging your vehicle. Check with your local dealer if you need
+        additional information.</li>
+      <li>Purchase a charging device that is certified by a nationally recognized testing laboratory.</li>
+      <li>Plug Level 1 EV chargers directly into an outlet designed to handle the amperage of the charging device. Never
+        use a multiplug adapter or extension cord.</li>
+    </ul>
+  </section>
+
+  <footer>
+
+  </footer>
+</body>
+
+</html>
